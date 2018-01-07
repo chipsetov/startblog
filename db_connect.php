@@ -29,4 +29,3 @@ catch(Exception $e) //Did not connect
     }
 }
 
-?>

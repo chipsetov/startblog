@@ -31,4 +31,3 @@ if ($conn){
     echo "Error creating table";
 }
 
-?>
