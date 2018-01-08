@@ -4,9 +4,10 @@
 session_start();
 require('header.php');
 
-print_r($_SESSION);
+print_r($_SESSION); ?>
 
 <?php require('includes/config.php'); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
