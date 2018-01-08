@@ -1,7 +1,7 @@
 <?php
 $menu_arr =  [
     'index.php' => 'Home',
-    'login.php' => 'Login',
+    /*'login.php' => 'Login',*/
     'registration.php' => 'Registration'];
 
 

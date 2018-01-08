@@ -20,8 +20,9 @@ require('config.php'); ?>
                 foreach ($menu_arr as $key => $value)
                     echo "<li><a href=".$key.">".$value."</a></li>";
                 ?>
-
+                <?php if(isset($_SESSION['user_id'])){ /*your logout button*/ echo "<li><a href="."logout.php".">"."Logout"."</a></li>"; } else { /*your login button*/ echo "<li><a href="."login.php".">"."Login"."</a></li>"; } ?>
             </ul>
+
 
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
