@@ -1,11 +1,11 @@
-<?php require('includes/config.php');
-
-$stmt = $db->prepare('SELECT postID, postTitle, postCont, postDate FROM blog_posts WHERE postID = :postID');
+<?php //require('includes/config.php');?>
+<?php require('connect.php');
+$stmt = $pdo->prepare('SELECT id, title, content, postDate FROM posts WHERE id = :postID');
 $stmt->execute(array(':postID' => $_GET['id']));
 $row = $stmt->fetch();
 
 //if post does not exists redirect user.
-if($row['postID'] == ''){
+if($row['id'] == ''){
     header('Location: ./');
     exit;
 }
@@ -15,7 +15,7 @@ if($row['postID'] == ''){
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Blog - <?php echo $row['postTitle'];?></title>
+    <title>Blog - <?php echo $row['title'];?></title>
     <link rel="stylesheet" href="style/normalize.css">
     <link rel="stylesheet" href="style/main.css">
 </head>
@@ -30,9 +30,9 @@ if($row['postID'] == ''){
 
     <?php
     echo '<div>';
-    echo '<h1>'.$row['postTitle'].'</h1>';
+    echo '<h1>'.$row['title'].'</h1>';
     echo '<p>Posted on '.date('jS M Y', strtotime($row['postDate'])).'</p>';
-    echo '<p>'.$row['postCont'].'</p>';
+    echo '<p>'.$row['content'].'</p>';
     echo '</div>';
     ?>
 

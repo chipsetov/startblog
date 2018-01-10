@@ -1,5 +1,5 @@
 <?php
-$servername = "localhost";
+$servername = "127.0.0.1:3319";
 $username = "root";
 $password = "";
 $dbname = "startblog";
@@ -41,9 +41,9 @@ $stmt->execute();
 $dbh = "CREATE TABLE IF NOT EXISTS `posts` (
 `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) COLLATE utf8_unicode_ci,
-  `description` text COLLATE utf8_unicode_ci,
+  `postDesc` text COLLATE utf8_unicode_ci,
   `content` text COLLATE utf8_unicode_ci,
-  `date` datetime COLLATE utf8_unicode_ci,
+  `postDate` datetime COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1";

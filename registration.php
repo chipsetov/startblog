@@ -86,15 +86,17 @@ if(isset($_POST['register'])){
 }
 
 ?>
-<h1>Register</h1>
-<form action="registration.php" method="post">
-    <label for="username">Username</label>
-    <input type="text" id="username" name="username"><br>
-    <label for="password">Password</label>
-    <input type="text" id="password" name="password"><br>
-    <input type="submit" name="register" value="Register"></button>
-</form>
 
+<div class="container">
+    <form class="form-signin" action="registration.php" method="post">
+        <h1 class="form-register-heading">Register</h1>
+    <label for="username">Username</label>
+    <input class="form-control" type="text" id="username" name="username"><br>
+    <label for="password">Password</label>
+    <input class="form-control" type="text" id="password" name="password"><br>
+    <input class="btn btn-lg btn-primary btn-block"  type="submit" name="register" value="Register"></button>
+</form>
+</div>
 <?php
 require('footer.php');
 

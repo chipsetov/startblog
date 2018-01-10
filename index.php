@@ -6,7 +6,7 @@ require('header.php');
 
 print_r($_SESSION); ?>
 
-<?php require('includes/config.php'); ?>
+<?php require('connect.php'); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,14 +26,15 @@ print_r($_SESSION); ?>
     <?php
     try {
 
-        $stmt = $db->query('SELECT postID, postTitle, postDesc, postDate FROM blog_posts ORDER BY postID DESC');
+        $stmt = $pdo->query('SELECT id, title, postDesc, postDate FROM posts ORDER BY id DESC');
+
         while($row = $stmt->fetch()){
 
             echo '<div>';
-            echo '<h1><a href="viewpost.php?id='.$row['postID'].'">'.$row['postTitle'].'</a></h1>';
+            echo '<h1><a href="viewpost.php?id='.$row['id'].'">'.$row['title'].'</a></h1>';
             echo '<p>Posted on '.date('jS M Y H:i:s', strtotime($row['postDate'])).'</p>';
             echo '<p>'.$row['postDesc'].'</p>';
-            echo '<p><a href="viewpost.php?id='.$row['postID'].'">Read More</a></p>';
+            echo '<p><a href="viewpost.php?id='.$row['id'].'">Read More</a></p>';
             echo '</div>';
 
         }
@@ -48,6 +49,6 @@ print_r($_SESSION); ?>
 
 </body>
 </html>
-
+<?php
 require('footer.php');
 
