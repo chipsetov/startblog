@@ -30,6 +30,10 @@ print_r($_SESSION); ?>
 
         while($row = $stmt->fetch()){
 
+
+            $stmt = $pdo->query("select sum(`like`) as `like`,sum(`unlike`) as `unlike` from `likes` where pid = :row['id'])");
+
+
             echo '<div>';
             echo '<h1><a href="viewpost.php?id='.$row['id'].'">'.$row['title'].'</a></h1>';
             echo '<p>Posted on '.date('jS M Y H:i:s', strtotime($row['postDate'])).'</p>';
@@ -47,8 +51,6 @@ print_r($_SESSION); ?>
 </div>
 
 
-</body>
-</html>
 <?php
 require('footer.php');
 
