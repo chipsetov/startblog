@@ -31,7 +31,7 @@ print_r($_SESSION); ?>
         while($row = $stmt->fetch()){
 
 
-            $stmt = $pdo->query("select sum(`like`) as `like`,sum(`unlike`) as `unlike` from `likes` where pid = :row['id'])");
+           // $stmt = $pdo->query("select sum(`like`) as `like`,sum(`unlike`) as `unlike` from `likes` where pid = :row['id'])");
 
 
             echo '<div>';
