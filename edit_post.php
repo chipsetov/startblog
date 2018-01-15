@@ -1,8 +1,9 @@
 <?php //include config
-require_once('../includes/config.php');
-
+//require_once('../includes/config.php');
+require('connect.php');
+require('header.php');
 //if not logged in redirect to login page
-if(!$user->is_logged_in()){ header('Location: login.php'); }
+//if(!$user->is_logged_in()){ header('Location: login.php'); }
 ?>
 <!doctype html>
 <html lang="en">
@@ -28,7 +29,7 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
 
 <div id="wrapper">
 
-    <?php include('menu.php');?>
+<!--    --><?php //include('menu.php');?>
     <p><a href="./">Blog Admin Index</a></p>
 
     <h2>Edit Post</h2>
@@ -66,7 +67,7 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
             try {
 
                 //insert into database
-                $stmt = $db->prepare('UPDATE blog_posts SET postTitle = :postTitle, postDesc = :postDesc, postCont = :postCont WHERE postID = :postID') ;
+                $stmt = $pdo->prepare('UPDATE posts SET title = :postTitle, postDesc = :postDesc, content = :postCont WHERE id = :postID') ;
                 $stmt->execute(array(
                     ':postTitle' => $postTitle,
                     ':postDesc' => $postDesc,
@@ -99,7 +100,7 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
 
     try {
 
-        $stmt = $db->prepare('SELECT postID, postTitle, postDesc, postCont FROM blog_posts WHERE postID = :postID') ;
+        $stmt = $pdo->prepare('SELECT id, title, postDesc, content FROM posts WHERE id = :postID') ;
         $stmt->execute(array(':postID' => $_GET['id']));
         $row = $stmt->fetch();
 
@@ -110,16 +111,16 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
     ?>
 
     <form action='' method='post'>
-        <input type='hidden' name='postID' value='<?php echo $row['postID'];?>'>
+        <input type='hidden' name='postID' value='<?php echo $row['id'];?>'>
 
         <p><label>Title</label><br />
-            <input type='text' name='postTitle' value='<?php echo $row['postTitle'];?>'></p>
+            <input type='text' name='postTitle' value='<?php echo $row['title'];?>'></p>
 
         <p><label>Description</label><br />
             <textarea name='postDesc' cols='60' rows='10'><?php echo $row['postDesc'];?></textarea></p>
 
         <p><label>Content</label><br />
-            <textarea name='postCont' cols='60' rows='10'><?php echo $row['postCont'];?></textarea></p>
+            <textarea name='postCont' cols='60' rows='10'><?php echo $row['content'];?></textarea></p>
 
         <p><input type='submit' name='submit' value='Update'></p>
 

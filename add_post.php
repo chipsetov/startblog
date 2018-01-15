@@ -79,7 +79,6 @@ if(isset($error)){
 <!--            toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"-->
 <!--        });-->
 <!--    </script>-->
-    <script src="https://cdn.ckeditor.com/ckeditor5/1.0.0-alpha.2/classic/ckeditor.js"></script>
 
 </head>
 <body>
