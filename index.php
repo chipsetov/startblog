@@ -39,6 +39,7 @@ print_r($_SESSION); ?>
             echo '<p>Posted on '.date('jS M Y H:i:s', strtotime($row['postDate'])).'</p>';
             echo '<p>'.$row['postDesc'].'</p>';
             echo '<p><a href="viewpost.php?id='.$row['id'].'">Read More</a></p>';
+            echo '<p><a href="edit_post.php?id='. $row['id'].'">Edit</a></p>';
             echo '</div>';
 
         }
