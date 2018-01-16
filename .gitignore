@@ -1,1 +1,4 @@
 .idea
+connect.php
+create_db.php
+create_tables.php
